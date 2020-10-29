@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { render } from 'react-dom';
 import './App.css';
+import AppContext from './context/Context';
+import Mainlist from './components/Mainlist';
 
 function App() {
+  const contextHook = useState('test');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.StrictMode>
+      <AppContext.Provider value={contextHook}>
+        <div className="main">
+          <h1>Hello There.</h1>
+          <Mainlist title="Testerino" />
+        </div>
+      </AppContext.Provider>
+    </React.StrictMode>
   );
 }
 
